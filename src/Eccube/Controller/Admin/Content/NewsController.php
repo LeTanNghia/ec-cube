@@ -100,7 +100,10 @@ class NewsController extends AbstractController
             }
         } else {
             $News = new \Eccube\Entity\News();
-            $News->setPublishDate(new \DateTime());
+            $publishDate=new \DateTime();
+            $News->setPublishDate(
+                \DateTime::createFromFormat('Y-m-d H:i',$publishDate->format('Y-m-d H:i'))
+            );
         }
 
         $builder = $this->formFactory
